@@ -8,6 +8,8 @@ import com.j0ach1mmall3.kfa.listeners.PlayerListener;
 
 public class Main extends JavaPlugin{
 	public void onEnable(){
+		getConfig().options().copyDefaults();
+		saveConfig();
 		new GameHandler(this);
 		new PlayerListener(this);
 		GameHandler.clearBans();

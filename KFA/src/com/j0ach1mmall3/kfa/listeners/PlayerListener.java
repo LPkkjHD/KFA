@@ -23,11 +23,12 @@ import com.j0ach1mmall3.kfa.Main;
 
 public class PlayerListener implements Listener{
 	private Main plugin;
-	private static int a = 5;
+	private static int a = 0;
 	private static int id = 0;
 	public PlayerListener(Main plugin){
 		this.plugin = plugin;
 		plugin.getServer().getPluginManager().registerEvents(this, plugin);
+		a = plugin.getConfig().getInt("JoinCountdown");
 	}
 	
 	@EventHandler
