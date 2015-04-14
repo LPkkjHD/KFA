@@ -1,0 +1,5 @@
+name: KFA
+main: com.j0ach1mmall3.kfa.Main
+version: 1.0.0
+author: j0ach1mmall3
+description: Original KFA plugin for Minecraft! Be AFK as long as possible!
