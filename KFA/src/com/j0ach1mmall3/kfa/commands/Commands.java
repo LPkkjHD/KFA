@@ -19,15 +19,18 @@ public class Commands implements CommandExecutor{
 			if (sender instanceof Player){
 				Player p = (Player) sender;
 				if (args.length == 0) {
-					p.sendMessage("§cUsage: /kfa reload");
+					p.sendMessage("�cUsage: /kfa reload");
 					return true;
 				} else if (args[0].equalsIgnoreCase("reload")) {
 					if (!p.hasPermission("kfa.reload")) {
-						p.sendMessage("§4You are not allowed to do this!");
+						String msg4 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Noperm"));
+				        msg4.replaceAll("%playerName", p.getName());
+				         p.sendMessage(msg4);
 						return true;
 					} else {
-						plugin.reloadConfig();
-						p.sendMessage("§2Config Reloaded!");
+						plugin.reloadConfig();						
+						String msg5 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Configreload"));
+						p.sendMessage(msg5);
 						return true;
 					}
 				}
@@ -38,7 +41,8 @@ public class Commands implements CommandExecutor{
 					return true;
 				} else if (args[0].equalsIgnoreCase("reload")) {
 					plugin.reloadConfig();
-					c.sendMessage(ChatColor.GREEN + "Config Reloaded!");
+					String msg5 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Configreload"));
+					c.sendMessage(msg5);
 					return true;
 				}
 			}

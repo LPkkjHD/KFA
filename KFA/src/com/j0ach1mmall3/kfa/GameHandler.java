@@ -5,13 +5,13 @@ import java.util.Date;
 import java.util.List;
 
 import org.bukkit.BanEntry;
-import org.bukkit.BanList;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.BanList.Type;
 import org.bukkit.entity.Player;
 
-public class GameHandler {
+public class GameHandler extends Main{
 	private static List<String> joinedPlayers = new ArrayList<String>();
 	private static Main plugin;
 	public GameHandler(Main plugin){
@@ -33,23 +33,29 @@ public class GameHandler {
 	public static void handleLoss(Player p){
 		joinedPlayers.remove(p.getName());
 		for(Player joined : getJoinedPlayers()){
-			joined.sendMessage("§4§l" + p.getName() + " §c§lhas lost the game!");
+			String msg1 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Playerlose"));
+	         msg1.replaceAll("%playerName", p.getName());
+	          joined.sendMessage(msg1);
 			joined.sendMessage("§d§l" + joinedPlayers.size() + " §5§lplayers remaining!");
 		}
-		p.kickPlayer("You lost the game!");
-		Bukkit.getServer().getBanList(Type.NAME).addBan(p.getName(), "§cYou lost the game!", new Date(Long.MAX_VALUE), p.getName()).save();
+		String msg2 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Playerlose2"));
+        msg2.replaceAll("%playerName", p.getName());
+		p.kickPlayer(msg2);
+		Bukkit.getServer().getBanList(Type.NAME).addBan(p.getName(), msg2, new Date(Long.MAX_VALUE), p.getName()).save();
 		if(joinedPlayers.size() == 1){
 			handleWin(Bukkit.getPlayer(joinedPlayers.get(0)));
 		}
 	}
 
 	private static void handleWin(final Player p) {
-		p.sendMessage("§a§lYou won the game!");
+		String msg3 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Playerwin"));
+        msg3.replaceAll("%playerName", p.getName());
+         p.sendMessage(msg3);
 		p.playSound(p.getLocation(), Sound.LEVEL_UP, 10, 1);
 		Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 			@Override
 			public void run() {
-				p.kickPlayer("§cRestarting the game!");
+				p.kickPlayer(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Restart")));
 				clearBans();
 			}
 		}, 20L);

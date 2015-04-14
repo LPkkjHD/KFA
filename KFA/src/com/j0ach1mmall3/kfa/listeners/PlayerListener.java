@@ -1,12 +1,5 @@
 package com.j0ach1mmall3.kfa.listeners;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import org.bukkit.BanEntry;
-import org.bukkit.BanList;
-import org.bukkit.BanList.Type;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -39,8 +32,12 @@ public class PlayerListener implements Listener{
 		Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 			@Override
 			public void run() {
-				p.sendMessage("§5§lWelcome to §2§lKFA§5§l, a brand new Minigame!");
-				p.sendMessage("§5§lWhen the counter is at 0, you may not do anything anymore, including moving, chatting, performing commands etc. If you do so, you will lose the game. Good luck!");
+				String msg6 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("somemsg1"));
+		        msg6.replaceAll("%playerName", p.getName());
+				p.sendMessage(msg6);
+				String msg7 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("somemsg2"));
+		        msg7.replaceAll("%playerName", p.getName());
+				p.sendMessage(msg7);
 				p.playSound(p.getLocation(), Sound.LEVEL_UP, 10, 1);
 			}
 		}, 20L);

@@ -1,1 +1,10 @@
 JoinCountdown: 5
+Restart: Restarting game...
+#Use %playerName for the players name.
+#Use & for color codes.
+Playerlose: &4&l %playerName &c&lhas lost the game!
+Playerlose2: &4You lost the game!
+PlayerWin: &a&lYou won the game!
+Noperm: &4You are not allowed to do this!
+Somemsg1: &5&lWelcome to &2&lKFA&5&l, a brand new Minigame!
+Somemsg2: &5&lWhen the counter is at 0, you may not do anything anymore, including moving, chatting, performing commands etc. If you do so, you will lose the game. Good luck!			

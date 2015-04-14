@@ -1,6 +1,7 @@
 package com.j0ach1mmall3.kfa;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,7 +16,7 @@ public class Main extends JavaPlugin{
 		new PlayerListener(this);
 		GameHandler.clearBans();
 		for(Player p : Bukkit.getOnlinePlayers()){
-			p.kickPlayer("Restarting the game...");
+			p.kickPlayer(ChatColor.translateAlternateColorCodes('&', getConfig().getString("Restart")));
 		}
 		getCommand("KFA").setExecutor(new Commands(this));
 	}
