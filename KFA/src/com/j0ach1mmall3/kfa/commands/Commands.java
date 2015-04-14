@@ -15,29 +15,28 @@ public class Commands implements CommandExecutor{
 		this.plugin = plugin;
 	}
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if(cmd.getName().equalsIgnoreCase("kfa")){
-			if(sender instanceof Player){
+		if (cmd.getName().equalsIgnoreCase("kfa")) {
+			if (sender instanceof Player){
 				Player p = (Player) sender;
-				if(args.length == 0){
-					p.sendMessage("§cUsage: /kfa reload");
+				if (args.length == 0) {
+					p.sendMessage("Â§cUsage: /kfa reload");
 					return true;
-				}
-				if(args[0].equalsIgnoreCase("reload")){
-					if(!p.hasPermission("kfa.reload")){
-						p.sendMessage("§4You are not allowed to do this!");
+				} else if (args[0].equalsIgnoreCase("reload")) {
+					if (!p.hasPermission("kfa.reload")) {
+						p.sendMessage("Â§4You are not allowed to do this!");
+						return true;
+					} else {
+						plugin.reloadConfig();
+						p.sendMessage("Â§2Config Reloaded!");
 						return true;
 					}
-					plugin.reloadConfig();
-					p.sendMessage("§2Config Reloaded!");
-					return true;
 				}
 			} else {
 				ConsoleCommandSender c = (ConsoleCommandSender) sender;
-				if(args.length == 0){
+				if (args.length == 0) {
 					c.sendMessage(ChatColor.RED + "Usage: /kfa reload");
 					return true;
-				}
-				if(args[0].equalsIgnoreCase("reload")){
+				} else if (args[0].equalsIgnoreCase("reload")) {
 					plugin.reloadConfig();
 					c.sendMessage(ChatColor.GREEN + "Config Reloaded!");
 					return true;
