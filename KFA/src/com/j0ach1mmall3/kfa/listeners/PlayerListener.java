@@ -9,6 +9,7 @@ import org.bukkit.BanList;
 import org.bukkit.BanList.Type;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -65,6 +66,18 @@ public class PlayerListener implements Listener{
 		if(!GameHandler.getJoinedPlayers().contains(p)){
 			return;
 		}
+		Location f = e.getFrom();
+	    Location t = e.getTo();
+	    if(f.getX() == t.getX() && f.getY() == t.getY() && f.getZ() == t.getZ()){
+	    	if(p.hasPermission("kfa.bypass.look")){
+		    	return;
+	    	}
+	    }
+	    if(f.getX() != t.getX() || f.getY() != t.getY() || f.getZ() != t.getZ()){
+	    	if(p.hasPermission("kfa.bypass.move")){
+		    	return;
+	    	}
+	    }
 		e.setCancelled(true);
 		GameHandler.handleLoss(p);
 	}
@@ -75,6 +88,9 @@ public class PlayerListener implements Listener{
 		if(!GameHandler.getJoinedPlayers().contains(p)){
 			return;
 		}
+		if(p.hasPermission("kfa.bypass.chat")){
+			return;
+		}
 		e.setCancelled(true);
 		GameHandler.handleLoss(p);
 	}
@@ -83,6 +99,9 @@ public class PlayerListener implements Listener{
 	public void onCommand(PlayerCommandPreprocessEvent e){
 		Player p = e.getPlayer();
 		if(!GameHandler.getJoinedPlayers().contains(p)){
+			return;
+		}
+		if(p.hasPermission("kfa.bypass.command")){
 			return;
 		}
 		e.setCancelled(true);

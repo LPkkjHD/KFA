@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.j0ach1mmall3.kfa.commands.Commands;
 import com.j0ach1mmall3.kfa.listeners.PlayerListener;
 
 public class Main extends JavaPlugin{
@@ -16,5 +17,6 @@ public class Main extends JavaPlugin{
 		for(Player p : Bukkit.getOnlinePlayers()){
 			p.kickPlayer("Restarting the game...");
 		}
+		getCommand("KFA").setExecutor(new Commands(this));
 	}
 }
