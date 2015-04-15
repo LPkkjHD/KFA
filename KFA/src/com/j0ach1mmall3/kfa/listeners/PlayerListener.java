@@ -11,6 +11,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.j0ach1mmall3.kfa.GameHandler;
 import com.j0ach1mmall3.kfa.Main;
@@ -101,6 +102,15 @@ public class PlayerListener implements Listener{
 			return;
 		}
 		e.setCancelled(true);
+		GameHandler.handleLoss(p);
+	}
+	
+	@EventHandler
+	public void onLeave(PlayerQuitEvent e){
+		Player p = e.getPlayer();
+		if(!GameHandler.getJoinedPlayers().contains(p)){
+			return;
+		}
 		GameHandler.handleLoss(p);
 	}
 }	
