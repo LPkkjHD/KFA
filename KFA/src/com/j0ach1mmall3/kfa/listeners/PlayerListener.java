@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import com.j0ach1mmall3.kfa.GameHandler;
 import com.j0ach1mmall3.kfa.Main;
+import com.j0ach1mmall3.kfa.api.Placeholders;
 
 public class PlayerListener implements Listener{
 	private Main plugin;
@@ -32,12 +33,10 @@ public class PlayerListener implements Listener{
 		Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 			@Override
 			public void run() {
-				String msg6 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("somemsg1"));
-		        msg6.replaceAll("%playerName", p.getName());
-				p.sendMessage(msg6);
-				String msg7 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("somemsg2"));
-		        msg7.replaceAll("%playerName", p.getName());
-				p.sendMessage(msg7);
+				String IntroductionMessage = Placeholders.parse(plugin.getConfig().getString("IntroductionMessage"), p);
+				p.sendMessage(IntroductionMessage);
+				String IntroductionMessage2 = Placeholders.parse(plugin.getConfig().getString("IntroductionMessage2"), p);
+				p.sendMessage(IntroductionMessage2);
 				p.playSound(p.getLocation(), Sound.LEVEL_UP, 10, 1);
 			}
 		}, 20L);
