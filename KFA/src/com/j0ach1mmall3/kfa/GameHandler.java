@@ -41,8 +41,8 @@ public class GameHandler {
 			joined.sendMessage("§d§l" + joinedPlayers.size() + " §5§lplayers remaining!");
 		}
 		String KickMessage = Placeholders.parse(plugin.getConfig().getString("KickMessage"), p);
-		p.kickPlayer(KickMessage);
 		Bukkit.getServer().getBanList(Type.NAME).addBan(p.getName(), KickMessage, new Date(Long.MAX_VALUE), p.getName()).save();
+		p.kickPlayer(KickMessage);
 		if(joinedPlayers.size() == 1){
 			handleWin(Bukkit.getPlayer(joinedPlayers.get(0)));
 		}

@@ -29,7 +29,6 @@ public class CustomScoreboard {
 	
 	public static void removePlayer(Player p){
 		sb.resetScores(p.getName());
-		p.setScoreboard(null);
 	}
 	
 	public static void startScheduler(Main plugin){
