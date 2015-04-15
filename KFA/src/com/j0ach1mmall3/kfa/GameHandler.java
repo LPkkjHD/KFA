@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 
 import com.j0ach1mmall3.kfa.api.Placeholders;
 
-public class GameHandler{
+public class GameHandler {
 	private static List<String> joinedPlayers = new ArrayList<String>();
 	private static Main plugin;
 	public GameHandler(Main plugin){
@@ -34,6 +34,7 @@ public class GameHandler{
 	
 	public static void handleLoss(Player p){
 		joinedPlayers.remove(p.getName());
+		CustomScoreboard.removePlayer(p);
 		for(Player joined : getJoinedPlayers()){
 			String LoseBroadcast = Placeholders.parse(plugin.getConfig().getString("LoseBroadcast"), p);
 	        joined.sendMessage(LoseBroadcast);

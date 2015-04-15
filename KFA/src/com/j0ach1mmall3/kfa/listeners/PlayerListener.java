@@ -13,6 +13,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import com.j0ach1mmall3.kfa.CustomScoreboard;
 import com.j0ach1mmall3.kfa.GameHandler;
 import com.j0ach1mmall3.kfa.Main;
 import com.j0ach1mmall3.kfa.api.Placeholders;
@@ -30,6 +31,7 @@ public class PlayerListener implements Listener{
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e){
 		final Player p = e.getPlayer();
+		CustomScoreboard.addPlayer(p);
 		e.setJoinMessage("");
 		Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 			@Override
