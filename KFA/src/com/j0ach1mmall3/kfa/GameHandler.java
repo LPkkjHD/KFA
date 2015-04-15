@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 
 import com.j0ach1mmall3.kfa.api.Placeholders;
 
-public class GameHandler extends Main{
+public class GameHandler{
 	private static List<String> joinedPlayers = new ArrayList<String>();
 	private static Main plugin;
 	public GameHandler(Main plugin){

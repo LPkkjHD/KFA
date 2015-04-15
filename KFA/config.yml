@@ -1,8 +1,8 @@
 JoinCountdown: 5
 RestartMessage: Restarting the game...
-LoseBroadcast: &4&l %playername% &c&lhas lost the game!
-KickMessage: &4You lost the game!
-WinMessage: &a&lYou won the game!
-NoPermissions: &4You are not allowed to do this!
-IntroductionMessage: &5&lWelcome to &2&lKFA&5&l, a brand new Minigame!
-IntroductionMessage2: &5&lWhen the counter is at 0, you may not do anything anymore, including moving, chatting, performing commands etc. If you do so, you will lose the game. Good luck!			
+LoseBroadcast: '&4&l %playername% &c&lhas lost the game!'
+KickMessage: '&4You lost the game!'
+WinMessage: '&a&lYou won the game!'
+NoPermissions: '&4You are not allowed to do this!'
+IntroductionMessage: '&5&lWelcome to &2&lKFA&5&l, a brand new Minigame!'
+IntroductionMessage2: '&5&lWhen the counter is at 0, you may not do anything anymore, including moving, chatting, performing commands etc. If you do so, you will lose the game. Good luck!'

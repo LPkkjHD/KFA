@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.j0ach1mmall3.kfa.api.Placeholders;
 import com.j0ach1mmall3.kfa.commands.Commands;
 import com.j0ach1mmall3.kfa.listeners.PlayerListener;
 
@@ -21,11 +22,13 @@ public class Main extends JavaPlugin{
 		saveConfig();
 		new GameHandler(this);
 		new PlayerListener(this);
+		new CustomScoreboard(this);
 		GameHandler.clearBans();
 		for(Player p : Bukkit.getOnlinePlayers()){
-			p.kickPlayer(ChatColor.translateAlternateColorCodes('&', getConfig().getString("Restart")));
+			p.kickPlayer(Placeholders.parse(getConfig().getString("RestartMessage"), p));
 		}
 		getCommand("KFA").setExecutor(new Commands(this));
+		CustomScoreboard.startScheduler(this);
 	}
 	
 	public static Permission getPermission(){
