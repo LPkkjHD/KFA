@@ -22,12 +22,12 @@ public class Commands implements CommandExecutor{
 				Player p = (Player) sender;
 				if (args.length == 0) {
 					p.sendMessage("§cUsage: /kfa reload");
-					return true;
+					return false;
 				} else if (args[0].equalsIgnoreCase("reload")) {
 					if (!p.hasPermission("kfa.reload")) {
 						String NoPermissions = Placeholders.parse(plugin.getConfig().getString("NoPermissions"), p);
 				        p.sendMessage(NoPermissions);
-						return true;
+						return false;
 					} else {
 						plugin.reloadConfig();						
 						p.sendMessage("§aReloaded Config!");
@@ -38,7 +38,7 @@ public class Commands implements CommandExecutor{
 				ConsoleCommandSender c = (ConsoleCommandSender) sender;
 				if (args.length == 0) {
 					c.sendMessage(ChatColor.RED + "Usage: /kfa reload");
-					return true;
+					return false;
 				} else if (args[0].equalsIgnoreCase("reload")) {
 					plugin.reloadConfig();
 					c.sendMessage(ChatColor.GREEN + "Reloaded Config!");
