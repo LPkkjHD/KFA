@@ -8,12 +8,14 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import com.j0ach1mmall3.kfa.Main;
+import com.j0ach1mmall3.kfa.api.Placeholders;
 
 public class Commands implements CommandExecutor{
 	private Main plugin;
 	public Commands(Main plugin){
 		this.plugin = plugin;
 	}
+	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("kfa")) {
 			if (sender instanceof Player){
@@ -23,14 +25,12 @@ public class Commands implements CommandExecutor{
 					return true;
 				} else if (args[0].equalsIgnoreCase("reload")) {
 					if (!p.hasPermission("kfa.reload")) {
-						String msg4 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Noperm"));
-				        msg4.replaceAll("%playerName", p.getName());
-				         p.sendMessage(msg4);
+						String NoPermissions = Placeholders.parse(plugin.getConfig().getString("NoPermissions"), p);
+				        p.sendMessage(NoPermissions);
 						return true;
 					} else {
 						plugin.reloadConfig();						
-						String msg5 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Configreload"));
-						p.sendMessage(msg5);
+						p.sendMessage("§aReloaded Config!");
 						return true;
 					}
 				}
@@ -41,8 +41,7 @@ public class Commands implements CommandExecutor{
 					return true;
 				} else if (args[0].equalsIgnoreCase("reload")) {
 					plugin.reloadConfig();
-					String msg5 = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Configreload"));
-					c.sendMessage(msg5);
+					c.sendMessage(ChatColor.GREEN + "Reloaded Config!");
 					return true;
 				}
 			}
