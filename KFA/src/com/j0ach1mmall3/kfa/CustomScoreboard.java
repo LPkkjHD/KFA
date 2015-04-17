@@ -10,6 +10,8 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
+import com.j0ach1mmall3.kfa.api.ActionBarAPI;
+
 public class CustomScoreboard {
 	private Main plugin;
 	private static Scoreboard sb;
@@ -37,6 +39,7 @@ public class CustomScoreboard {
 			public void run() {
 				for(Player p : GameHandler.getJoinedPlayers()){
 					obj.getScore(p.getName()).setScore(obj.getScore(p.getName()).getScore()+1);
+					ActionBarAPI.sendActionBar(p, "§d§lPlayers in-game: §5§l" + GameHandler.getJoinedPlayers().size());
 				}  
 			}
 		}, 0, 20L);
