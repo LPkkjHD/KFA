@@ -28,7 +28,7 @@ public class Placeholders {
 				.replace("%level%", String.valueOf(p.getLevel()))
 				.replace("%exp%", String.valueOf(p.getExp()))
 				.replace("%ip%", p.getAddress().toString())
-				.replace("%balance%", String.valueOf(((net.milkbowl.vault.permission.Permission) Main.getPermission()).getPrimaryGroup(p)))
+				.replace("%group%", String.valueOf(((net.milkbowl.vault.permission.Permission) Main.getPermission()).getPrimaryGroup(p)))
 				.replace("%prefix%", ((net.milkbowl.vault.chat.Chat) Main.getChat()).getPlayerSuffix(p))
 				.replace("%suffix%", ((net.milkbowl.vault.chat.Chat) Main.getChat()).getPlayerSuffix(p))
 				.replace("%balance%", String.valueOf(((net.milkbowl.vault.economy.Economy) Main.getEconomy()).getBalance(p)));

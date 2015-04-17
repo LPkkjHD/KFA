@@ -17,6 +17,7 @@ import com.j0ach1mmall3.kfa.CustomScoreboard;
 import com.j0ach1mmall3.kfa.GameHandler;
 import com.j0ach1mmall3.kfa.Main;
 import com.j0ach1mmall3.kfa.api.Placeholders;
+import com.j0ach1mmall3.kfa.api.TitleAPI;
 
 public class PlayerListener implements Listener{
 	private Main plugin;
@@ -49,10 +50,11 @@ public class PlayerListener implements Listener{
 				if(a < 0){
 					Bukkit.getScheduler().cancelTask(id);
 					GameHandler.addPlayer(p);
+					TitleAPI.sendTitle(p, 5, 20, 5, null, "§5§lThe game has begun!");
 					p.playSound(p.getLocation(), Sound.ENDERDRAGON_GROWL, 10, 1);
 					return;
 				}
-				p.sendMessage("§5§l" + a);
+				TitleAPI.sendTitle(p, 5, 20, 5, "§5§l" + a, null);
 				p.playSound(p.getLocation(), Sound.CLICK, 10, 1);
 				a--;
 			}
