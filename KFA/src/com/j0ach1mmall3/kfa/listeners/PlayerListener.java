@@ -50,11 +50,11 @@ public class PlayerListener implements Listener{
 				if(a < 0){
 					Bukkit.getScheduler().cancelTask(id);
 					GameHandler.addPlayer(p);
-					TitleAPI.sendTitle(p, 5, 20, 5, null, "§5§lThe game has begun!");
+					TitleAPI.sendTitle(p, 5, 20, 5, "", "§5§lThe game has begun!");
 					p.playSound(p.getLocation(), Sound.ENDERDRAGON_GROWL, 10, 1);
 					return;
 				}
-				TitleAPI.sendTitle(p, 5, 20, 5, "§5§l" + a, null);
+				TitleAPI.sendTitle(p, 5, 20, 5, "§5§l" + a, "");
 				p.playSound(p.getLocation(), Sound.CLICK, 10, 1);
 				a--;
 			}
