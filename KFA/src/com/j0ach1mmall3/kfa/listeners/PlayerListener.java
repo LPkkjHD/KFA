@@ -112,9 +112,6 @@ public class PlayerListener implements Listener{
 	@EventHandler
 	public void onLeave(PlayerQuitEvent e){
 		Player p = e.getPlayer();
-		if(!GameHandler.getJoinedPlayers().contains(p)){
-			return;
-		}
 		GameHandler.handleLoss(p);
 	}
 }	
