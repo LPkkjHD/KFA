@@ -24,8 +24,9 @@ public class Main extends JavaPlugin{
 		new PlayerListener(this);
 		new CustomScoreboard(this);
 		GameHandler.clearBans();
+		String restartMessage = Placeholders.parse(getConfig().getString("RestartMessage");
 		for(Player p : Bukkit.getOnlinePlayers()){
-			p.kickPlayer(Placeholders.parse(getConfig().getString("RestartMessage"), p));
+			p.kickPlayer(restartMessage, p));
 		}
 		getCommand("KFA").setExecutor(new Commands(this));
 		CustomScoreboard.startScheduler(this);
