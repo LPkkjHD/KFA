@@ -35,10 +35,10 @@ public class GameHandler {
 	public static void handleLoss(Player p){
 		joinedPlayers.remove(p.getName());
 		CustomScoreboard.removePlayer(p);
+		String loseBroadcast = Placeholders.parse(plugin.getConfig().getString("LoseBroadcast"));
 		for(Player joined : getJoinedPlayers()){
-			String LoseBroadcast = Placeholders.parse(plugin.getConfig().getString("LoseBroadcast"), p);
-	        joined.sendMessage(LoseBroadcast);
-			joined.sendMessage("§d§l" + joinedPlayers.size() + " §5§lplayers remaining!");
+	        	joined.sendMessage(loseBroadcast);
+			joined.sendMessage("Â§dÂ§l" + joinedPlayers.size() + " Â§5Â§lplayers remaining!");
 		}
 		String KickMessage = Placeholders.parse(plugin.getConfig().getString("KickMessage"), p);
 		Bukkit.getServer().getBanList(Type.NAME).addBan(p.getName(), KickMessage, new Date(Long.MAX_VALUE), p.getName()).save();
@@ -50,7 +50,7 @@ public class GameHandler {
 
 	private static void handleWin(final Player p) {
 		String WinMessage = Placeholders.parse(plugin.getConfig().getString("WinMessage"), p);
-        p.sendMessage(WinMessage);
+        	p.sendMessage(WinMessage);
 		p.playSound(p.getLocation(), Sound.LEVEL_UP, 10, 1);
 		Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
 			@Override
