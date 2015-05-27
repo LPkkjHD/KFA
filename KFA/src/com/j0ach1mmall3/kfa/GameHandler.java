@@ -35,7 +35,7 @@ public class GameHandler {
 	public static void handleLoss(Player p){
 		joinedPlayers.remove(p.getName());
 		CustomScoreboard.removePlayer(p);
-		String loseBroadcast = Placeholders.parse(plugin.getConfig().getString("LoseBroadcast"));
+		String loseBroadcast = Placeholders.parse(plugin.getConfig().getString("LoseBroadcast"), p);
 		for(Player joined : getJoinedPlayers()){
 	        	joined.sendMessage(loseBroadcast);
 			joined.sendMessage("§d§l" + joinedPlayers.size() + " §5§lplayers remaining!");
